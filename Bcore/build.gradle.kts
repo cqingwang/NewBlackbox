@@ -93,8 +93,8 @@ dependencies {
     implementation("com.google.android.material:material:$googlematerial")
     implementation ("org.lsposed.hiddenapibypass:hiddenapibypass:$hiddenapibypass")
     implementation("com.bytedance.android:shadowhook:$shadowhook")
-    implementation ("top.canyie.pine:core:0.2.8")
-    implementation ("top.canyie.pine:xposed:0.0.9")
+    implementation ("top.canyie.pine:core:0.2.9")
+    implementation ("top.canyie.pine:xposed:0.1.0")
 
 
 }

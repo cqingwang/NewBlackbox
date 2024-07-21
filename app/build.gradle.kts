@@ -17,11 +17,11 @@ android {
     namespace = (rootProject.ext["packagename"] as String)
     compileSdk = (rootProject.ext["compileSdk"] as Int)
     defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                argument("includeCompileClasspath", "false")
-            }
-        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                argument("includeCompileClasspath", "false")
+//            }
+//        }
 
         applicationId = (rootProject.ext["appid"] as String)
         minSdk = (rootProject.ext["minSdk"] as Int)
@@ -54,7 +54,8 @@ android {
             )
         }
         debug {
-            signingConfigs.getByName("debug"){
+            signingConfigs.getByName("vcore" +
+                    ""){
                enableV1Signing = true
                enableV2Signing = true
                enableV3Signing = true
@@ -100,7 +101,9 @@ android {
         abi {
             isEnable = true
             reset()
-            include("armeabi-v7a", "arm64-v8a")
+//            include("armeabi-v7a", "arm64-v8a")
+            include("armeabi-v7a")
+
             isUniversalApk = false
         }
     }

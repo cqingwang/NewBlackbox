@@ -1,6 +1,12 @@
 pluginManagement {
     repositories {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
         gradlePluginPortal()
         jcenter()
@@ -18,7 +24,7 @@ dependencyResolutionManagement {
 }
 
 
-rootProject.name = "NewBlackbox-3.0"
+rootProject.name = "NewBlackbox"
 include(":app")
 include(":Bcore")
 
