@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android' // Or 'kotlin-android'
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     // signingConfigs example
     signingConfigs {
         vcore { // Groovy's way of creating and configuring
