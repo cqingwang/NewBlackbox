@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <!-- unknown -->
     <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
@@ -352,11 +353,11 @@
             android:name="com.vcore.core.system.SystemCallProvider"
             android:authorities="${applicationId}.blackbox.SystemCallProvider"
             android:exported="false"
-            android:process="@string/black_box_service_name" />
+            android:process=":black" />
 
         <!--file provider-->
         <provider
-            android:name=".fake.provider.FileProvider"
+            android:name="com.vcore.fake.provider.FileProvider"
             android:authorities="${applicationId}.blackbox.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -366,10 +367,10 @@
         </provider>
 
         <receiver
-            android:name=".proxy.ProxyBroadcastReceiver"
+            android:name="com.vcore.proxy.ProxyBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
-            android:process="@string/black_box_service_name">
+            android:process=":black">
             <intent-filter>
                 <action android:name="${applicationId}.stub_receiver" />
             </intent-filter>
@@ -378,15 +379,15 @@
         <service
             android:name="com.vcore.core.system.DaemonService"
             android:exported="false"
-            android:process="@string/black_box_service_name" />
+            android:process=":black" />
 
         <service
             android:name="com.vcore.core.system.DaemonService$DaemonInnerService"
             android:exported="false"
-            android:process="@string/black_box_service_name" />
+            android:process=":black" />
 
         <activity
-            android:name=".app.LauncherActivity"
+            android:name="com.vcore.app.LauncherActivity"
             android:excludeFromRecents="true"
             android:theme="@style/LauncherTheme" />
 

@@ -1,0 +1,42 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+        maven {
+            name "aliyunmaven"
+            url "https://maven.aliyun.com/repository/public"
+        }
+        maven {
+            name "aliyunGoogle"
+            url "https://maven.aliyun.com/repository/google"
+        }
+        maven {
+            name "aliyunJCenter"
+            url "https://maven.aliyun.com/repository/jcenter"
+        }
+        maven { url 'https://jitpack.io' }
+        maven {
+            name "IntMaven"
+            url "https://nexus.iinti.cn/repository/maven-public/"
+        }
+    }
+}
+
+
+include(":app")
+rootProject.name = "NewBlackbox"
+
+include ':Bcore'
+//project(':Bcore').projectDir = new File(rootProject.projectDir, './Bcore')
+
+//use jdk17

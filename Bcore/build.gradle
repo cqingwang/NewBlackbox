@@ -1,0 +1,104 @@
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    namespace = "com.vspace"
+    compileSdk = 34
+    defaultConfig {
+//        applicationId "com.vspace"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 100
+        versionName "3.0.1"
+        vectorDrawables {
+            useSupportLibrary  true
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+        multiDexEnabled true
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+
+    signingConfigs {
+        sign {
+            storeFile file("../app/vcore.jks")
+            storePassword "234y7229ujd2yr23r"
+            keyPassword "234y7229ujd2yr23r"
+            keyAlias "vcore"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.sign
+            minifyEnabled false
+            debuggable false
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.sign
+            minifyEnabled false
+            jniDebuggable true
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        aidl = true
+        prefab = true
+        viewBinding = true
+    }
+
+    packagingOptions {
+        excludes += ["**/libshadowhook.so"]
+//        exclude "**/libshadowhook.so"
+    }
+
+
+}
+
+dependencies {
+    implementation("androidx.appcompat:appcompat") {
+        exclude group: "com.android.support", module: "support-compat"
+    }
+//    implementation "androidx.appcompat:appcompat"
+
+    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.24"
+    implementation "com.iqiyi.xcrash:xcrash-android-lib:3.1.0"
+    implementation "com.google.android.material:material:1.11.0"
+    implementation "org.lsposed.hiddenapibypass:hiddenapibypass:4.3"
+    implementation "com.bytedance.android:shadowhook:1.0.9"
+    implementation "top.canyie.pine:core:0.2.9"
+    implementation "top.canyie.pine:xposed:0.1.0"
+
+}

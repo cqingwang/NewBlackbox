@@ -62,7 +62,7 @@ import com.vcore.utils.provider.ProviderCall;
 @SuppressLint({"StaticFieldLeak", "NewApi"})
 public class BlackBoxCore extends ClientConfiguration {
     public static final String TAG = "BlackBoxCore";
-
+    public static final String black_box_service_name=":black";
     private static final BlackBoxCore sBlackBoxCore = new BlackBoxCore();
     private static Context sContext;
     private ProcessType mProcessType;
@@ -127,7 +127,7 @@ public class BlackBoxCore extends ClientConfiguration {
         if (processName.equals(BlackBoxCore.getHostPkg())) {
             mProcessType = ProcessType.Main;
             startLogcat();
-        } else if (processName.endsWith(getContext().getString(R.string.black_box_service_name))) {
+        } else if (processName.endsWith(black_box_service_name)) {
             mProcessType = ProcessType.Server;
         } else {
             mProcessType = ProcessType.BAppClient;

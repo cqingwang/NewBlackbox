@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import com.vcore.BlackBoxCore;
-import com.vcore.R;
+//import com.vcore.R;
 import com.vcore.core.system.user.BUserHandle;
 import com.vcore.fake.frameworks.BActivityManager;
 import com.vcore.utils.Slog;
@@ -59,10 +59,10 @@ public class LauncherActivity extends Activity {
             return;
         }
         Drawable drawable = packageInfo.applicationInfo.loadIcon(BlackBoxCore.getPackageManager());
-        setContentView(R.layout.activity_launcher);
 
-        findViewById(R.id.iv_icon)
-                .setBackground(drawable);
+//        setContentView(R.layout.activity_launcher);
+//        findViewById(R.id.iv_icon).setBackground(drawable);
+
         new Thread(() -> BlackBoxCore.getBActivityManager().startActivity(launchIntent, userId)).start();
     }
 
