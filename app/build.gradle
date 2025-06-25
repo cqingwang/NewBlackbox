@@ -86,6 +86,7 @@ android {
             universalApk false // universalApk not isUniversalApk
         }
     }
+
 }
 
 // Variable declaration
